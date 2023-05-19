@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 
- // function to see when 2 numbers in an array equals target
+ // function to see when 2 numbers in an array equals targets
 var twoSum = function(nums, target) {
     //nums = array of numbers, target = integer
     // is grabbing the first number
