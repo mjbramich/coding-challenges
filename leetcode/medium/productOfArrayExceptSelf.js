@@ -54,3 +54,31 @@ function productExceptSelf(nums) {
 
 	return result;
 }
+
+// OR
+
+function productArray(nums) {
+	// need to find the product of nums in array, except for that of nums[i]
+
+	//ex -> [1,2,3,4] [24,12,8,6]
+
+	// prefix is product of nums left side of nums[i]
+	//postfix is product of nums right side of nums[i]
+	let prefix = 1;
+	let postfix = 1;
+	let result = [];
+
+	// loop through array left to right
+	for (let i = 0; i < nums.length; i++) {
+		result[i] = prefix;
+		prefix *= nums[i];
+	}
+
+	// loop through array right to left
+	for (let i = nums.length - 1; i >= 0; i--) {
+		result[i] *= postfix;
+		postfix *= nums[i];
+	}
+
+	return result;
+}
