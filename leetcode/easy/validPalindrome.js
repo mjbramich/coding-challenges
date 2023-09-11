@@ -41,3 +41,38 @@ var isPalindrome = function (s) {
 
 	return result === result.split('').reverse().join('');
 };
+
+function validPalindrome(s) {
+	const isAlpha = (c) =>
+		(c.toLowerCase() >= 'a' && c.toLowerCase() <= 'z') ||
+		(c >= '0' && c <= '9');
+
+	let [l, r] = [0, s.length - 1];
+
+	while (l < r) {
+		while (l < r && !isAlpha(s[l])) {
+			l += 1;
+		}
+
+		while (r > l && !isAlpha(s)[r]) {
+			r -= 1;
+		}
+
+		if (s[l].toLowerCase() !== s[r].toLowerCase()) {
+			return false;
+		}
+
+		[l, r] = [l + 1, r - 1];
+	}
+
+	return true;
+}
+
+function isAlphaNumeric(char) {
+	const code = char.charCodeAt(0);
+	return (
+		(code >= 48 && code <= 57) ||
+		(code >= 65 && code <= 90) ||
+		(code >= 97 && code <= 122)
+	);
+}
