@@ -18,25 +18,23 @@ Constraints:
 0 <= heights[i] <= 104
 */
 
-
 // My solution
 var largestRectangleArea = function (heights) {
-	// input is an array of integers representing a histogram bar, each  bar(integer) has the width of 1 and height of its value
-	// Need to try and find the area of the greatres rectangle in the histogram(2 integers sise by side)
-	// return a integer which is the greatest area
-
-	// examples
-	// heights = [2,1,5,6,2,3] => 10 => (5+6) == greatest rectangle
-
 	let maxArea = 0;
 	let stack = [];
 
+	// loop over bars in histogram
 	for (let i = 0; i < heights.length; i++) {
+		// index and height of each bar
 		let start = i;
 		let height = heights[i];
+
+		// when the bar is smaller than what we have on the stack we pop it and evaulate it maxArea
 		while (stack.length && stack[stack.length - 1][0] > height) {
 			const [height, index] = stack.pop();
-			maxArea = Math.max(maxArea, height * (i - index));
+
+			maxArea = Math.max(maxArea, height * (i - index)); // i - index is the width 
+			//put in the stack the earliest point, from there this height could start.
 			start = index;
 		}
 		stack.push([height, start]);
