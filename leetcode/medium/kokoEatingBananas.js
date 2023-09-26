@@ -51,22 +51,22 @@ var minEatingSpeed = function (piles, h) {
 	return res;
 };
 
-// Brute force
-// var minEatingSpeed = function (piles, h) {
-// 	const maxPile = Math.max(...piles);
 
-// 	for (let k = 1; k <= maxPile; k++) {
-// 		let hours = 0;
+var minEatingSpeed = function (piles, h) {
+	const maxPile = Math.max(...piles);
 
-// 		for (let pile of piles) {
-// 			hours += Math.ceil(pile / k);
-// 		}
+	for (let k = 1; k <= maxPile; k++) {
+		let hours = 0;
 
-// 		if (hours <= h) {
-// 			// since we start iterating from 1 hr (which would be least)
-// 			return k; // Return the minimum eating speed as soon as it's found.
-// 		}
-// 	}
+		for (let pile of piles) {
+			hours += Math.ceil(pile / k);
+		}
 
-// 	return maxPile; // If no speed is found in the loop, return the maximum pile size.
-// };
+		if (hours <= h) {
+			// since we start iterating from 1 hr (which would be least)
+			return k; // Return the minimum eating speed as soon as it's found.
+		}
+	}
+
+	return maxPile; // If no speed is found in the loop, return the maximum pile size.
+};
