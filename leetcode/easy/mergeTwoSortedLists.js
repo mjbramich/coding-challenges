@@ -39,24 +39,26 @@ var mergeTwoLists = function (list1, list2) {
 	return merged.next;
 };
 
-// Recursively 
+// Recursively
 
 // Function to merge two sorted linked lists
 function mergeTwoLists(l1, l2) {
-    // Base cases
-    if (!l1) return l2;
-    if (!l2) return l1;
+	// The head of the merged list is determined by the comparison of the initial values of l1 and l2
 
-    // Compare the values of the current nodes
-    if (l1.val < l2.val) {
-        // If l1's value is smaller, set l1.next to the result of merging the rest of l1 and l2
-        l1.next = mergeTwoLists(l1.next, l2);
-        // Return the modified l1
-        return l1;
-    } else {
-        // If l2's value is smaller or equal, set l2.next to the result of merging the rest of l1 and l2
-        l2.next = mergeTwoLists(l1, l2.next);
-        // Return the modified l2
-        return l2;
-    }
+	// Base cases
+	if (!l1) return l2; // If l1 is null, return l2 (end of l1 reached)
+	if (!l2) return l1; // If l2 is null, return l1 (end of l2 reached)
+
+	// Compare the values of the current nodes
+	if (l1.val < l2.val) {
+		// If l1's value is smaller, set l1.next to the result of merging the rest of l1 and l2
+		l1.next = mergeTwoLists(l1.next, l2);
+		// Return the modified l1
+		return l1;
+	} else {
+		// If l2's value is smaller or equal, set l2.next to the result of merging the rest of l1 and l2
+		l2.next = mergeTwoLists(l1, l2.next);
+		// Return the modified l2
+		return l2;
+	}
 }

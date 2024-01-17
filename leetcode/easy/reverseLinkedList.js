@@ -83,4 +83,17 @@ let head = {
 	},
 };
 
-console.log(reverseListES6(head));
+// Recursively
+var reverseListRecursive = function(head) {
+    // Base case: either no head or we reach the end of our list
+    if (head == null || head.next == null){
+        return head;
+    }
+    // Recursively go all the way to the end
+    let reversedListHead = reverseList(head.next)
+    // Insert myself at the beginning of the reversed list
+    head.next.next = head;
+    head.next = null;
+    // End this recursive call and go to the next one
+    return reversedListHead;
+};
