@@ -84,16 +84,30 @@ let head = {
 };
 
 // Recursively
-var reverseListRecursive = function(head) {
-    // Base case: either no head or we reach the end of our list
-    if (head == null || head.next == null){
-        return head;
-    }
-    // Recursively go all the way to the end
-    let reversedListHead = reverseList(head.next)
-    // Insert myself at the beginning of the reversed list
-    head.next.next = head;
-    head.next = null;
-    // End this recursive call and go to the next one
-    return reversedListHead;
+var reverseListRecursive = function (head) {
+	// Base case: either no head or we reach the end of our list
+	if (head == null || head.next == null) {
+		return head;
+	}
+	// Recursively go all the way to the end
+	let reversedListHead = reverseList(head.next);
+	// Insert myself at the beginning of the reversed list
+	head.next.next = head;
+	head.next = null;
+	// End this recursive call and go to the next one
+	return reversedListHead;
 };
+
+// head argument represents the current node in the list, and the prev argument represents the previous node.
+const reverseListR = (head, prev = null) => {
+	// Base Case, once at end of list return previous pointer
+	if (head === null) return prev;
+	// Temp pointer
+	const next = head.next;
+	// point current next pointer to the prev node (reversing)
+	head.next = prev;
+	// Recursively call function with the next node as the new head and the current node as the new previous node.
+	return reverseListR(next, head);
+};
+
+console.log(reverseListR(head));
