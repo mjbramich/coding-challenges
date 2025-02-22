@@ -9,11 +9,19 @@ Examples
 
 // My solution
 function sortArray(array) {
-  
-    // create an array of only odd numbers and sort them
-    const odd = array.filter(v => v % 2)
-                      .sort((a,b) => a - b)
-    
-    // if number is odd, replace it with first sorted odd
-    return  array.map(v => v % 2 ? odd.shift() : v)
-    }
+  // create an array of only odd numbers and sort them
+  const odd = array.filter((v) => v % 2).sort((a, b) => a - b);
+
+  // if number is odd, replace it with first sorted odd
+  return array.map((v) => (v % 2 ? odd.shift() : v));
+}
+
+// Revisited Solution:
+
+const isOdd = (num) => num % 2 !== 0;
+
+const sortArray = (array) => {
+  const oddNumbers = array.filter((num) => isOdd(num)).sort((a, b) => a - b);
+
+  return array.map((num) => (isOdd(num) ? oddNumbers.shift() : num));
+};
