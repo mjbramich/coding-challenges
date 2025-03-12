@@ -9,18 +9,18 @@ More details about factorial can be found here.
 // My solution
 
 function factorial(n) {
-    if(n === 0) {
-        return 1;
-    }
+  if (n === 0) {
+    return 1;
+  }
 
-    if(n < 0 || n > 12) {
-        throw new RangeError('n must be between 0 and 12');
-    }
+  if (n < 0 || n > 12) {
+    throw new RangeError("n must be between 0 and 12");
+  }
 
-    for(let i = n - 1; i > 1; i--) {
-        n *= i;
-    }
-    return n;
+  for (let i = n - 1; i > 1; i--) {
+    n *= i;
+  }
+  return n;
 }
 
 /* using recursion
@@ -30,3 +30,18 @@ function factorial(n) {
   return n <= 1 ? 1 : n * factorial(n - 1);
 }
 */
+
+// Revisited solution
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  let res = n;
+
+  for (let i = n; i >= 2; i--) {
+    res *= i - 1;
+  }
+
+  return res;
+}
